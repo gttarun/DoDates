@@ -1,0 +1,15 @@
+F 1 1/ 13 Rankine cycle (steam turbine)
+M 11/16 Exam review
+W 11/18 Exam #3, Chapters 1-6, 7:00-9:00
+
+F 11/20 Rankine cycle with reheat
+
+M 11/23 Otto cycle (gasoline engine)
+W 11/25 Otto cycle/Diesel cycle
+
+F 11/27 Thanksgiving Break
+
+M 1 1/30 Brayton cycle (gas turbine)
+W 12/2 Brayton cycle continued
+
+F 12/4 Review for Final Exam
