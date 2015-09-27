@@ -1,5 +1,7 @@
 from PIL import Image
 import  sys, pyscr
+import time, re
+import subprocess
 from pytesseract import image_to_string
 
 shell = pyscr.terminal()
@@ -12,18 +14,36 @@ def to_text(img_path=''):
 	except:
 		return
 
-	save_to_file(img, img_path)
+	parser(image_to_string(img))
 
 # convert a pdf file to text
 def to_pdf(pdf):
-	open("output.txt", "r+")
-	shell.execute("pdf2txt.py -O ./ -o ./output.txt -t text ./PDFs/" + pdf)
+	proc = subprocess.Popen('echo "to stdout"', shell=True, stdout=subprocess.PIPE, )
+	output = proc.communicate()[0]
+	parser(output)
 
-# save text output to text file
-def save_to_file(img, file_name):
-	f = open("output.txt", "r+")
-	f.write(image_to_string(img))
-	f.close()
+def parser(subject):
+	subject = ''
+
+	for match in re.finditer(
+	    r"""(?ix)             # case-insensitive, verbose regex
+	    \b                    # match a word boundary
+	    (?:                   # match the following three times:
+	     (?:                  # either
+	      \d+                 # a number,
+	      (?:\.|st|nd|rd|th)* # followed by a dot, st, nd, rd, or th (optional)
+	      |                   # or a month name
+	      (?:(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*)
+	      |					  # or full month name
+	      (?:(?:January|Febuary|March|April|May|June|July|August|September|October|November|December)[a-z]*)
+	     )
+	     [\s./-]*             # followed by a date separator or whitespace (optional)
+	    ){3}                  # do this three times
+	    \b""",                # and end at a word boundary. 
+	    subject):
+		match.start()
+		match.end()
+		print match.group()
 
 if __name__ == "__main__":
 	if sys.argv[1] == "-u":
