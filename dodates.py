@@ -16,13 +16,12 @@ def to_text(img_path=''):
 
 # convert a pdf file to text
 def to_pdf(pdf):
-	file_name = pdf[:pdf.find(".")] + ".txt"
-	open("./digitalized/" + file_name, "w")
-	shell.execute("pdf2txt.py -O digitalized -o ./digitalized/" + file_name  + " -t text" + " ./PDFs/" + pdf)
+	open("output.txt", "r+")
+	shell.execute("pdf2txt.py -O ./ -o ./output.txt -t text ./PDFs/" + pdf)
 
 # save text output to text file
 def save_to_file(img, file_name):
-	f = open("./digitalized/" + file_name[:file_name.find(".")] + ".txt", "a")
+	f = open("output.txt", "r+")
 	f.write(image_to_string(img))
 	f.close()
 
