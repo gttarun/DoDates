@@ -1,5 +1,3 @@
-#!b
-
 from PIL import Image
 import  sys, pyscr
 from pytesseract import image_to_string
