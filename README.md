@@ -1,3 +1,3 @@
-**Seamless**
+**DoDates**
 
-A simple, easy way to switch your work from one device to another
+Due Dates made easy.
