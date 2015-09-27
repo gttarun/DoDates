@@ -23,7 +23,6 @@ def to_pdf(pdf):
 	parser(output)
 
 def parser(subject):
-	subject = ''
 
 	for match in re.finditer(
 	    r"""(?ix)             # case-insensitive, verbose regex
