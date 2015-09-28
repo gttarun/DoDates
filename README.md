@@ -1,3 +1,3 @@
 **DoDates**
 
-Due Dates made easy.
+Due dates made easy.
